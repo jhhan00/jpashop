@@ -20,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @Transactional
 class OrderServiceTest {
+    /**
+     * 실제 현업에서는 이보다 훨씬 자세하게 테스트를 진행한다.
+     */
 
     @Autowired EntityManager em;
     @Autowired OrderService orderService;
@@ -42,7 +45,16 @@ class OrderServiceTest {
 
     @Test
     public void 주문취소() throws Exception {
+        Member member = createMember();
+        Book book = createBook("시골 JPA1", 20000, 15);
+        int orderCount = 2;
 
+        Long orderId = orderService.order(member.getId(), book.getId(), orderCount);    // 8개로 감소
+        orderService.cancelOrder(orderId);                                              // 주문 취소했으니 10개로 복구
+
+        Order getOrder = orderRepository.findOne(orderId);
+        assertEquals(OrderStatus.CANCEL, getOrder.getStatus(), "주문 취소시 상태는 CANCEL이다.");
+        assertEquals(15, book.getStockQuantity(), "주문이 취소된 상품은 그만큼 재고가 증가해야 한다.");
     }
 
     @Test
