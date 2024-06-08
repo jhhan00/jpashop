@@ -33,7 +33,6 @@ public abstract class Item {
 
     /**
      * 재고 수량 증가
-     * @param quantity
      */
     public void addStock(int quantity) {
         this.stockQuantity += quantity;
@@ -41,7 +40,6 @@ public abstract class Item {
 
     /**
      * 재고 수량 감소
-     * @param quantity
      */
     public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
