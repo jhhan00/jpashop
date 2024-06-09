@@ -77,7 +77,7 @@ public class OrderRepository {
 
     /**
      * JPA Criteria 를 이용해서 동적쿼리 진행
-     * String 더하는 것보다는 낫지만 그래도 굉장히 복잡함
+     * String 더하는 것보다는 낫지만 그래도 굉장히 복잡함 -> QueryDSL 사용 시 해결 가능
      */
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
