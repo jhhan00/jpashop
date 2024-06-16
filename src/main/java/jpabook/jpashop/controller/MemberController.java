@@ -22,13 +22,13 @@ public class MemberController {
     private final MemberService memberService;
 
     @GetMapping("/members/new")
-    public String createForm(Model model) {
+    public String createFormMember(Model model) {
         model.addAttribute("memberForm", new MemberForm());
         return "members/createMemberForm";
     }
 
     @PostMapping("/members/new")
-    public String create(@Valid MemberForm form, BindingResult result) {
+    public String createMember(@Valid MemberForm form, BindingResult result) {
 
         if(result.hasErrors()) {
             log.error("something wrong...");
