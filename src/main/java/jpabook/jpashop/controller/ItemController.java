@@ -20,13 +20,13 @@ public class ItemController {
     private final ItemService itemService;
 
     @GetMapping("/items/new")
-    public String createFormBook(Model model) {
+    public String createFormItem(Model model) {
         model.addAttribute("form", new BookForm());
         return "items/createItemForm";
     }
 
     @PostMapping("/items/new")
-    public String createBook(BookForm form) {
+    public String createItem(BookForm form) {
         Book book = new Book();
         book.setName(form.getName());
         book.setPrice(form.getPrice());
