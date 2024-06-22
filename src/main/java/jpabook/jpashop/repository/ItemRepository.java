@@ -15,6 +15,7 @@ public class ItemRepository {
 
     /**
      * 아이템 저장 (등록 & 갱신)
+     * merge를 쓰기 때문에 null값으로 업데이트 되는 경우를 주의해야함
      * @param item
      */
     public void save(Item item) {
